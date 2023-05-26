@@ -6,9 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 final GlobalKey<NavigatorState> _rootNavigatorKey =
-GlobalKey<NavigatorState>(debugLabel: 'root');
+    GlobalKey<NavigatorState>(debugLabel: 'root');
 final GlobalKey<NavigatorState> _shellNavigatorKey =
-GlobalKey<NavigatorState>(debugLabel: 'shell');
+    GlobalKey<NavigatorState>(debugLabel: 'shell');
 
 // This scenario demonstrates how to set up nested navigation using ShellRoute,
 // which is a pattern where an additional Navigator is placed in the widget tree
@@ -43,9 +43,8 @@ class ShellRouteExampleApp extends StatelessWidget {
           /// The first screen to display in the bottom navigation bar.
           GoRoute(
             path: '/a',
-            builder: (BuildContext context, GoRouterState state) {
-              return const ScreenA();
-            },
+            pageBuilder: (BuildContext context, GoRouterState state) =>
+                _transitionPageBuilder(context, state, const ScreenA()),
             routes: <RouteBase>[
               // The details screen to display stacked on the inner Navigator.
               // This will cover screen A but not the application shell.
@@ -62,9 +61,8 @@ class ShellRouteExampleApp extends StatelessWidget {
           /// selected.
           GoRoute(
             path: '/b',
-            builder: (BuildContext context, GoRouterState state) {
-              return const ScreenB();
-            },
+            pageBuilder: (BuildContext context, GoRouterState state) =>
+                _transitionPageBuilder(context, state, const ScreenB()),
             routes: <RouteBase>[
               /// Same as "/a/details", but displayed on the root Navigator by
               /// specifying [parentNavigatorKey]. This will cover both screen B
@@ -82,9 +80,8 @@ class ShellRouteExampleApp extends StatelessWidget {
           /// The third screen to display in the bottom navigation bar.
           GoRoute(
             path: '/c',
-            builder: (BuildContext context, GoRouterState state) {
-              return const ScreenC();
-            },
+            pageBuilder: (BuildContext context, GoRouterState state) =>
+                _transitionPageBuilder(context, state, const ScreenC()),
             routes: <RouteBase>[
               // The details screen to display stacked on the inner Navigator.
               // This will cover screen A but not the application shell.
@@ -100,6 +97,18 @@ class ShellRouteExampleApp extends StatelessWidget {
       ),
     ],
   );
+
+  static Page<dynamic> _transitionPageBuilder(
+      BuildContext context, GoRouterState state, Widget child) {
+    Page<dynamic> page = CustomTransitionPage(
+      key: state.pageKey,
+      child: child,
+      transitionsBuilder: (BuildContext context, Animation<double> animation,
+              Animation<double> secondaryAnimation, Widget child) =>
+          FadeTransition(opacity: animation, child: child),
+    );
+    return page;
+  }
 
   @override
   Widget build(BuildContext context) {
