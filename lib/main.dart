@@ -11,10 +11,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter',
       theme: ThemeData(
+        fontFamily: 'YekanBakhFaNumRegular',
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Inter Your Title Here ...'),
+      home: const MyHomePage(title: 'Enter Your Title Here ...'),
     );
   }
 }
@@ -41,7 +42,7 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              'You have pushed the button this many times:',
+              'Sample text',
             ),
           ],
         ),
