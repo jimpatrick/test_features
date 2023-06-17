@@ -2,15 +2,19 @@
 
 A repo for test packages & features
 
-## Getting Started
+### This project(reminder) based on this tutorial:
+```html
+<a href="https://maneesha-erandi.medium.com/add-a-reminder-to-your-app-with-flutter-local-notifications-dfb2e5120499">Tutorial link</a>
+```
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Notification structure
+- We used 2 plugins for schedule notification to alert user:
+  - flutter_local_notifications: ^14.1.1
+  - date_field: ^3.0.5
+- Task we should do:
+  - Initialize a plugin instance with android and iOS notification settings
+  - Initialize the time zones
+  - Create select notification action(Ex: — navigate to a specific page)
+  - Request iOS permission
+  - In this case schedule a notification
+  - add the method to show notifications
