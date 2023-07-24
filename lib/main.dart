@@ -9,13 +9,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter',
+      title: 'Crypto and Hash',
       theme: ThemeData(
         fontFamily: 'YekanBakhFaNumRegular',
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.lightBlueAccent),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Enter Your Title Here ...'),
+      home: const MyHomePage(title: 'Crypto and Hash'),
     );
   }
 }
