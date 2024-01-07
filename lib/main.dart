@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:test_feature/screens/page_view.dart';
 
 void main() => runApp(MaterialApp.router(routerConfig: router));
 
@@ -26,9 +27,7 @@ final router = GoRouter(
       path: '/details',
       builder: (_, __) => Scaffold(
         appBar: AppBar(title: const Text('Details Screen')),
-        body: const Center(
-          child: Text('You are in details page'),
-        ),
+        body: const PageViewTest(),
       ),
     )
   ],
